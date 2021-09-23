@@ -1,8 +1,14 @@
-# -*- coding: utf-8 -*-
-
-from .models import Slang
+from djantimat.models import Slang, TraceBrowser
 from django.contrib import admin
 
 
-class SlangAdmin(admin.ModelAdmin):pass
-admin.site.register(Slang, SlangAdmin)
+@admin.register(Slang)
+class SlangAdmin(admin.ModelAdmin):
+    list_display = ['word']
+    search_fields = ['word']
+
+
+@admin.register(TraceBrowser)
+class TraceBrowserAdmin(admin.ModelAdmin):
+    list_display = ['uniqueid']
+    search_fields = ['uniqueid']
